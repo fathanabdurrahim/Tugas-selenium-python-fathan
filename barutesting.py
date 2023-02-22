@@ -16,9 +16,9 @@ class TestLogindanregister(unittest.TestCase):
         time.sleep(1)
         driver.find_element(By.ID,"signUp").click()# buka singup
         time.sleep(1)
-        driver.find_element(By.ID,"name_register").send_keys("Dom") # isi email
+        driver.find_element(By.ID,"name_register").send_keys("Dom") # isi username
         time.sleep(1)
-        driver.find_element(By.ID,"email_register").send_keys("Dom@gmail.com") # isi password
+        driver.find_element(By.ID,"email_register").send_keys("Dom@gmail.com") # isi email
         time.sleep(1)
         driver.find_element(By.ID,"password_register").send_keys("kuy123") # isi password
         time.sleep(1)
