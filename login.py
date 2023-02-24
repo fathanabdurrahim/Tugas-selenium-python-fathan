@@ -9,27 +9,7 @@ class TestLogindanregister(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome(ChromeDriverManager().install())
  
-    def test_a_Register(self):
-        # steps
-        driver = self.browser #buka web browser
-        driver.get("http://barru.pythonanywhere.com/daftar") # buka situs
-        time.sleep(1)
-        driver.find_element(By.ID,"signUp").click()# buka singup
-        time.sleep(1)
-        driver.find_element(By.ID,"name_register").send_keys("Dom") # isi username
-        time.sleep(1)
-        driver.find_element(By.ID,"email_register").send_keys("Dom@gmail.com") # isi email
-        time.sleep(1)
-        driver.find_element(By.ID,"password_register").send_keys("kuy123") # isi password
-        time.sleep(1)
-        driver.find_element(By.ID, "signup_register").click()
-        time.sleep(1)
-
-        # validasi
-        response_data = driver.find_element(By.CLASS_NAME,"swal2-html-container").text
-        self.assertIn('created user!', response_data)
-
-    def test_b_Login(self):
+    def test_a_ADDJobtitle(self):
         # steps
         driver = self.browser #buka web browser
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login") # buka situs
@@ -40,8 +20,46 @@ class TestLogindanregister(unittest.TestCase):
         time.sleep(1)
         driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button').click()
         time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a').click() # Menu Admin
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[1]/header/div[2]/nav/ul/li[2]/span').click() #Dropdown job
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/header/div[2]/nav/ul/li[2]/ul/li[1]/a').click() #Jobtitles
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div/div[1]/div/button/i').click() #ADD Job
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input').send_keys("Denting") # Input Jobtitle
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/textarea').send_keys("Help teeth problem") # Input Jobdescription
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div/form/div[5]/button[2]').click() # Save
+        time.sleep(1)
 
-      
+    def test_b_jobtitles(self):
+        # steps
+        driver = self.browser #buka web browser
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login") # buka situs
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input').send_keys("Admin") # isi email
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input').send_keys("admin123") # isi password
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button').click()
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a').click() # Menu Admin
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[1]/header/div[2]/nav/ul/li[2]/span').click() #Dropdown job
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/header/div[2]/nav/ul/li[2]/ul/li[1]/a').click() #Jobtitles
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[1]/div/div[1]/div/label/span/i').click() #Select All Job title
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/button').click() # Delete Jobtitle
+        time.sleep(5)
+        driver.find_element(By.XPATH, '//*[@id="app"]/div[3]/div/div/div/div[3]/button[2]').click() # Delete Message
+        time.sleep(5)
+       
+
 
     def tearDown(self):
         self.browser.close()
